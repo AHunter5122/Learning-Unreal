@@ -20,7 +20,7 @@ UOpenDoor::UOpenDoor()
 void UOpenDoor::BeginPlay()
 {
 	Super::BeginPlay();
-	ActorThatOpens = GetWorld()->GetFirstPlayerController()->GetPawn();
+	
 	Owner = GetOwner();
 
 }
@@ -45,7 +45,7 @@ void UOpenDoor::TickComponent( float DeltaTime, ELevelTick TickType, FActorCompo
 
 	//Poll the Trigger Volume
 	//If the ActorThatOpens is in the volume,
-	if (PressurePlate->IsOverlappingActor(ActorThatOpens))
+	if (GetTotalMassOfActorsOnPlate() > TriggerMass)
 	{
 		OpenDoor();
 		LastDoorOpenTime = GetWorld()->GetTimeSeconds();
@@ -58,5 +58,10 @@ void UOpenDoor::TickComponent( float DeltaTime, ELevelTick TickType, FActorCompo
 	}
 	
 
+}
+//returns total mass in KG
+float UOpenDoor::GetTotalMassOfActorsOnPlate()
+{
+	return 60.f;
 }
 
