@@ -20,6 +20,7 @@ UOpenDoor::UOpenDoor()
 void UOpenDoor::BeginPlay()
 {
 	Super::BeginPlay();
+	ActorThatOpens = GetWorld()->GetFirstPlayerController()->GetPawn();
 
 }
 
@@ -34,6 +35,7 @@ void UOpenDoor::OpenDoor()
 	//Set the door rotation
 	Owner->SetActorRotation(NewRotation);
 }
+
 
 
 // Called every frame
