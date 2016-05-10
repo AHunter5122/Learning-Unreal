@@ -24,5 +24,7 @@ private:
 	UPROPERTY(VisibleAnywhere)
 	APlayerController* PlayerThatGrabs;
 		
+	UPROPERTY(EditAnywhere)
+	float Reach = 100.f;
 	
 };
